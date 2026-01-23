@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
 import AnimatedUnderline from './AnimatedUnderline';
-
+import logo from '@/assets/logo-folkviljan.png';
 const HeroSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -33,10 +33,9 @@ const HeroSection: React.FC = () => {
       <div className="max-w-6xl w-full mx-auto text-center space-y-6 md:space-y-8">
         {/* Logo at the top */}
         <img 
-          src="/lovable-uploads/925fca25-40c3-4a66-a2fa-3e5f0f5b7a8d.png"
+          src={logo}
           alt="Folkviljan Orust Logo"
-          className="mx-auto mb-4 w-48 md:w-64 max-w-xs drop-shadow-lg animate-on-load opacity-0 translate-y-8 transition-all duration-500"
-          style={{background: 'rgba(255,255,255,0.95)', borderRadius: '1.5rem', padding: '0.5rem'}}
+          className="mx-auto mb-4 w-56 md:w-72 max-w-sm animate-on-load opacity-0 translate-y-8 transition-all duration-500"
         />
 
         {/* Slogan under logo */}
