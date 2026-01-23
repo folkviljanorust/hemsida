@@ -1,29 +1,25 @@
 
 import React, { useState } from 'react';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import AnimatedUnderline from './AnimatedUnderline';
 import newsItems, { NewsItem } from '@/data/newsItems';
 import { Link } from 'react-router-dom';
-import NewsDialog from './NewsDialog';
+
+const NewsContent: React.FC<{ item: NewsItem }> = ({ item }) => {
+  return (
+    <div className="text-folk-dark-purple max-h-[70vh] overflow-y-auto pr-2">
+      <p className="text-sm text-folk-purple mb-4">{item.date}</p>
+      <div className="whitespace-pre-line">{item.content}</div>
+    </div>
+  );
+};
 
 const NewsSection: React.FC = () => {
-  const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-  const handleOpenNews = (item: NewsItem) => {
-    setSelectedNews(item);
-    setIsDialogOpen(true);
-  };
-
-  const handleCloseNews = () => {
-    setIsDialogOpen(false);
-  };
-
-  // Get the latest 3 news items
+  // Get the latest 2 news items for pop-out display
   const latestNews = [...newsItems].sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
-  }).slice(0, 3);
+  }).slice(0, 2);
 
   return (
     <section id="news" className="py-16 md:py-24 px-6 bg-folk-gray">
@@ -38,26 +34,28 @@ const NewsSection: React.FC = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
           {latestNews.map((item) => (
-            <Card key={item.id} className="animate-on-scroll bg-white shadow-md hover:shadow-lg transition-all duration-300">
-              <CardHeader>
-                <CardTitle className="text-xl text-folk-dark-purple">{item.title}</CardTitle>
-                <CardDescription>{item.date}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p>{item.content.substring(0, 150)}...</p>
-              </CardContent>
-              <CardFooter>
-                <Button variant="outline" className="text-folk-purple border-folk-purple hover:bg-folk-lavender" onClick={() => handleOpenNews(item)}>
-                  Läs mer
+            <Dialog key={item.id}>
+              <DialogTrigger asChild>
+                <Button 
+                  variant="outline" 
+                  className="px-6 py-6 text-lg text-folk-purple border-folk-purple hover:bg-folk-lavender"
+                >
+                  {item.title}
                 </Button>
-              </CardFooter>
-            </Card>
+              </DialogTrigger>
+              <DialogContent className="max-w-3xl bg-white">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl text-folk-dark-purple">{item.title}</DialogTitle>
+                </DialogHeader>
+                <NewsContent item={item} />
+              </DialogContent>
+            </Dialog>
           ))}
         </div>
         
-        <div className="text-center mt-12">
+        <div className="text-center">
           <Link to="/news">
             <Button className="bg-folk-purple hover:bg-folk-dark-purple text-white px-6 py-2">
               Se alla nyheter
@@ -65,12 +63,6 @@ const NewsSection: React.FC = () => {
           </Link>
         </div>
       </div>
-
-      <NewsDialog 
-        newsItem={selectedNews} 
-        isOpen={isDialogOpen} 
-        onClose={handleCloseNews} 
-      />
     </section>
   );
 };
