@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Din SEO-head – behåll allt detta! -->
+  <!--  SEO-head -->
   <title>Folkviljan Orust - Lokalpolitik För Ett Starkare Orust</title>
   <meta name="description" content="Folkviljan Orust arbetar för en starkare kommun med sund ekonomi, personlig frihet och hållbar tillväxt. Vi skapar ett Orust där alla kan trivas och växa." />
   <meta name="keywords" content="Folkviljan, Folkviljan Orust, Orust, politik, lokalpolitik, kommunpolitik, Orust kommun, västra götaland, bohuslän, kommunalval, val, frihet, ekonomi, hållbar tillväxt" />
@@ -24,7 +24,7 @@
   <meta name="twitter:description" content="Vi arbetar för en starkare kommun med sund ekonomi, personlig frihet och hållbar tillväxt." />
   <meta name="twitter:image" content="https://www.folkviljanorust.se/og-image.png" />
 
-  <!-- Canonical – matcha www för att lösa mismatch -->
+  <!-- Canonical – matcha www för att lösa missmatch -->
   <link rel="canonical" href="https://www.folkviljanorust.se/" />
 
   <!-- Additional SEO -->
@@ -37,7 +37,7 @@
 <body>
   <div id="root"></div>
 
-  <!-- Behåll din SPA-redirect (bra för GitHub Pages) -->
+  <!-- SPA-redirect (bra för GitHub Page-->
   <script type="text/javascript">
     (function(l) {
       if (l.search[1] === '/' ) {
@@ -51,10 +51,18 @@
     }(window.location))
   </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Folkviljan Orust",
+  "url": "https://www.folkviljanorust.se/"
+}
+</script>
+  
   <!-- GPT Engineer script -->
   <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
 
-  <!-- TA BORT denna rad också – Vite lägger till rätt entry point automatiskt -->
-  <!-- <script type="module" src="/src/main.tsx"></script> -->
+
 </body>
 </html>
