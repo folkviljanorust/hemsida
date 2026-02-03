@@ -129,7 +129,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formId = "contact-form" }) =>
       <div className="cf-turnstile"
            data-sitekey="0x4AAAAAACXRdYGLoG1JZGqn"
            data-callback="handleTurnstileSuccess"
-           data-theme="light"  
+           data-theme="dark"  
            data-size="normal">
       </div>
 
