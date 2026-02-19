@@ -1,5 +1,3 @@
-
 User-agent: *
 Allow: /
-Sitemap: https://folkviljanorust.se/sitemap.xml
-
+Sitemap: https://www.folkviljanorust.se/sitemap.xml
