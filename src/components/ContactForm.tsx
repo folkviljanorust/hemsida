@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -18,10 +18,13 @@ const ContactForm: React.FC<ContactFormProps> = ({ formId = "contact-form" }) =>
   });
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
 
+  const turnstileRef = useRef<HTMLDivElement>(null);
+  const widgetIdRef = useRef<string | null>(null);
+
   // Ladda Turnstile-scriptet
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
     script.async = true;
     script.defer = true;
     document.body.appendChild(script);
@@ -31,25 +34,68 @@ const ContactForm: React.FC<ContactFormProps> = ({ formId = "contact-form" }) =>
     };
   }, []);
 
+  // Rendera widgeten explicit när scriptet är klart
+  useEffect(() => {
+    if (!turnstileRef.current) return;
+
+    const tryRender = () => {
+      if (window.turnstile && turnstileRef.current) {
+        // Ta bort gammal widget om den finns
+        if (widgetIdRef.current) {
+          window.turnstile.remove(widgetIdRef.current);
+        }
+
+        const widgetId = window.turnstile.render(turnstileRef.current, {
+          sitekey: '0x4AAAAAACXRdYGLoG1JZGqn',
+          theme: 'dark',           // eller 'light' / 'auto'
+          size: 'normal',
+          callback: (token: string) => {
+            setTurnstileToken(token);
+            console.log('Turnstile OK → token:', token);
+          },
+          'error-callback': (err: any) => {
+            console.error('Turnstile error:', err);
+            toast.error('Valideringsfel – försök ladda om sidan');
+          },
+          'expired-callback': () => {
+            setTurnstileToken(null);
+            console.warn('Turnstile token expired');
+          }
+        });
+
+        widgetIdRef.current = widgetId;
+      }
+    };
+
+    
+    const interval = setInterval(() => {
+      if (window.turnstile) {
+        tryRender();
+        clearInterval(interval);
+      }
+    }, 150);
+
+    return () => {
+      clearInterval(interval);
+      if (widgetIdRef.current && window.turnstile) {
+        window.turnstile.remove(widgetIdRef.current);
+      }
+    };
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleTurnstileSuccess = (token: string) => {
-    setTurnstileToken(token);
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!turnstileToken) {
-      toast.error("Validering misslyckades. Försök igen.");
+      toast.error("Vänligen verifiera att du inte är en robot.");
       return;
     }
 
     setIsSubmitting(true);
-
     try {
       const response = await fetch("https://formspree.io/f/xwplwgee", {
         method: "POST",
@@ -58,24 +104,25 @@ const ContactForm: React.FC<ContactFormProps> = ({ formId = "contact-form" }) =>
         },
         body: JSON.stringify({
           ...formData,
-          "cf-turnstile-response": turnstileToken  // Turnstile-token skickas med
+          "cf-turnstile-response": turnstileToken
         })
       });
 
       if (response.ok) {
         toast.success("Tack för ditt meddelande! Vi återkommer så snart som möjligt.");
         setFormData({ name: '', email: '', phone: '', message: '' });
-        setTurnstileToken(null); // Återställ token
-        // Återställ Turnstile-widget (valfritt, men bra UX)
-        if (window.turnstile) {
-          window.turnstile.reset();
+        setTurnstileToken(null);
+
+        // Återställ widgeten efter lyckad submit
+        if (widgetIdRef.current && window.turnstile) {
+          window.turnstile.reset(widgetIdRef.current);
         }
       } else {
-        toast.error("Det gick inte att skicka meddelandet. Försök igen senare.");
+        toast.error("Kunde inte skicka meddelandet. Försök igen.");
       }
     } catch (error) {
       console.error("Form submission error:", error);
-      toast.error("Ett fel uppstod. Kontrollera din internetanslutning.");
+      toast.error("Något gick fel – kolla nätverket.");
     } finally {
       setIsSubmitting(false);
     }
@@ -125,13 +172,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ formId = "contact-form" }) =>
         />
       </div>
 
-      {/* Cloudflare Turnstile */}
-      <div className="cf-turnstile"
-           data-sitekey="0x4AAAAAACXRdYGLoG1JZGqn"
-           data-callback="handleTurnstileSuccess"
-           data-theme="dark"  
-           data-size="normal">
-      </div>
+      {/* Turnstile container */}
+      <div ref={turnstileRef} className="my-4 flex justify-center" />
 
       <Button
         type="submit"
@@ -143,6 +185,5 @@ const ContactForm: React.FC<ContactFormProps> = ({ formId = "contact-form" }) =>
     </form>
   );
 };
-
 
 export default ContactForm;
