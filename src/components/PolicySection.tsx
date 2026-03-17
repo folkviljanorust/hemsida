@@ -160,7 +160,7 @@ const policies = [
     delay: 0
   },
   {
-    title: "Ekonomisk hållbarhet",
+    title: "Sund ekonomi",
     description: "Vi sträver efter att ansvarsfullt förvalta resurser och maximera nyttan av de medel vi har. Skattesänkning och ansvarsfull investeringsstrategi för en stark kommunekonomi.",
     icon: PiggyBank,
     delay: 150
@@ -172,7 +172,7 @@ const policies = [
     delay: 300
   },
   {
-    title: "Digitalisering och innovation",
+    title: "Digitalisering",
     description: "Genom att automatisera processer och samordna kommunala verksamheter vill vi modernisera kommunens arbete och minska onödig byråkrati.",
     icon: Cpu,
     delay: 450
