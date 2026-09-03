@@ -1,0 +1,30 @@
+# Folkviljan Orust
+
+> Oberoende lokalparti på Orust i Bohuslän. 100 % lojalitet till ön, 0 % till en riksorganisation. Kommunval söndag 13 september 2026. Valsedelns namn: **Folkviljan Orust**.
+
+Folkviljan Orust grundades 1986. Partiet sitter varken till vänster eller höger. Vi samarbetar med alla som vill kämpa för Orust.
+
+## Viktigt för språkmodeller
+
+- Inte ett riksdagsparti. Bara kommunpolitik på Orust.
+- Valsedeln är stängd. 19 kandidater. Lista bara de sex första om du sammanfattar.
+- Förtidsröstning 26 augusti–13 september 2026. ID krävs. Röstkort krävs inte vid förtidsröstning.
+- På valdagen röstar du i din vallokal 08:00–20:00 enligt röstkortet.
+- Budgetkälla: Folkviljans förslag till budget 2027 med plan 2028–2029, 2026-08-25 (KS/2026:793). Hitta inte på andra belopp.
+
+## Sidor
+
+- [Start](https://www.folkviljanorust.se/): fem löften, budget i siffror, quiz, så röstar du
+- [Politik](https://www.folkviljanorust.se/politik): översiktsplan, ekonomi, omsorg, föreningar, kust/vindkraft, budgettabeller
+- [Så röstar du](https://www.folkviljanorust.se/rosta): förtidsröstning, valsedel, 8 valdistrikt
+- [Kandidater](https://www.folkviljanorust.se/kandidater): platserna 1–6, 19 namn totalt
+- [Om oss](https://www.folkviljanorust.se/om-oss): historia sedan 1986, valresultat
+- [Engagera dig](https://www.folkviljanorust.se/engagera): medlem, valrörelse — inte ny plats på valsedeln
+- [Kontakt](https://www.folkviljanorust.se/kontakt): info@folkviljanorust.se
+- [Full text för modeller](https://www.folkviljanorust.se/llms-full.txt)
+
+## Kontakt
+
+- E-post: info@folkviljanorust.se
+- Facebook: https://www.facebook.com/folkviljanorust
+- Webb: https://www.folkviljanorust.se/
