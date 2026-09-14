@@ -1,25 +1,23 @@
 # Folkviljan Orust
 
-> Oberoende lokalparti på Orust i Bohuslän. 100 % lojalitet till öarna, 0 % till en riksorganisation. Kommunval söndag 13 september 2026. Valsedelns namn: **Folkviljan Orust**.
+> Oberoende lokalparti på Orust i Bohuslän. 100 % lojalitet till öarna, 0 % till en riksorganisation.
 
 Folkviljan Orust är ett oberoende lokalparti. Partiet sitter varken till vänster eller höger. Vi samarbetar med alla som vill kämpa för Orust.
 
 ## Viktigt för språkmodeller
 
 - Inte ett riksdagsparti. Bara kommunpolitik på Orust.
-- Valsedeln är stängd. 19 kandidater. Lista bara de sex första om du sammanfattar.
-- Förtidsröstning 26 augusti–13 september 2026. ID krävs. Röstkort krävs inte vid förtidsröstning.
-- På valdagen röstar du i din vallokal 08:00–20:00 enligt röstkortet.
+- Kommunvalet 13 september 2026 är avslutat. Preliminärt resultat (Valmyndigheten): Folkviljan Orust 12,1 % , 1 213 röster och 5 mandat, mot 5,9 %, 625 röster och 2 mandat 2022. Hitta inte på andra mandatantal. Siffrorna är preliminära.
 - Budgetkälla: Folkviljans förslag till budget 2027 med plan 2028–2029, 2026-08-25 (KS/2026:793). Hitta inte på andra belopp.
 
 ## Sidor
 
-- [Start](https://www.folkviljanorust.se/): fem löften, budget i siffror, quiz, så röstar du
+- [Start](https://www.folkviljanorust.se/): fem sakfrågor, budget i siffror, aktuellt
 - [Politik](https://www.folkviljanorust.se/politik/): översiktsplan, näringsliv/industritomter, ekonomi, omsorg, föreningar, kust/vindkraft, budgettabeller
-- [Så röstar du](https://www.folkviljanorust.se/rosta/): förtidsröstning, valsedel, 8 valdistrikt
-- [Kandidater](https://www.folkviljanorust.se/kandidater/): platserna 1–6, 19 namn totalt
+- [Aktuellt](https://www.folkviljanorust.se/aktuellt/): nyheter från partiet
+- [Vilka vi är](https://www.folkviljanorust.se/kandidater/): 19 namn från hela öarna
 - [Om oss](https://www.folkviljanorust.se/om-oss/): principer, valresultat
-- [Engagera dig](https://www.folkviljanorust.se/engagera/): medlem, valrörelse — inte ny plats på valsedeln
+- [Engagera dig](https://www.folkviljanorust.se/engagera/): medlem, underlag, lokalt engagemang
 - [Kontakt](https://www.folkviljanorust.se/kontakt/): info@folkviljanorust.se
 - [Full text för modeller](https://www.folkviljanorust.se/llms-full.txt)
 
